@@ -11,7 +11,7 @@ import datetime
 
 me = "Ruben"
 now = datetime.datetime.now()
-openai.api_key = "PLACE YOUR API KEY HERE"
+openai.api_key = "PLACE YOUR KEY HERE"
 
 
 
@@ -55,7 +55,16 @@ def chat():
         if "goodnight" in input1:
             print(f"VOICE:\n\nHave a good night {me}")
         else:
-            yes
+            response = openai.Completion.create(
+                model="text-davinci-003",
+                prompt=input1,
+                temperature=0.6,
+                max_tokens=150,
+                top_p=1,
+                frequency_penalty=1,
+                presence_penalty=1
+            )
+            print(f"VOICE:{response.choices[0].text}")
 
 
 
