@@ -11,7 +11,7 @@ import datetime
 
 me = "Ruben"
 now = datetime.datetime.now()
-openai.api_key = "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"
+openai.api_key = "PLACE YOUR API KEY HERE"
 
 
 
@@ -52,16 +52,11 @@ def chat():
     while active:
         input1 = input("Write something...\n")
         print(f"ME:\n\n{input1}")
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt= f"{input1}",
-            temperature=0.7,
-            max_tokens=256,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-        print(f"VOICE:{response.choices[0].text}")
+        if "goodnight" in input1:
+            print(f"VOICE:\n\nHave a good night {me}")
+        else:
+            yes
+
 
 
 sys.stdout = Tee(open(f"C:/Users/user/OneDrive/Desktop/tagebuch/{now.date()}.txt", "w"))
